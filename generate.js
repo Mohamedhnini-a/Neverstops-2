@@ -24,7 +24,7 @@ const sourceUrls = [
   "https://github.com/SoliSpirit/SolVPN/raw/refs/heads/main/all_configs.txt",
   "https://github.com/liMilCo/v2r/raw/refs/heads/main/all_configs.txt",
   "https://sub.vlessfo.ru/vlessforu/working_configs.txt",
-  "https://github.com/ebrasha/free-v2ray-public-list/raw/refs/heads/main/V2Ray-Config-By-EbraSha-All-Type.txt",
+  "https://github.com/ebrasha/free-v2ray-public-list/raw/refs/heads/main/V2Ray-Config-By-EbraSha-All-Type.txt"
 ];
 
 const FREE_IP = "104.18.37.127";
