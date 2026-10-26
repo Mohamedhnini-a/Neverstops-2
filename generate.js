@@ -2,6 +2,10 @@ const fs = require('fs/promises');
 
 const sourceUrls = [
   "https://raw.githubusercontent.com/F0rc3Run/F0rc3Run/refs/heads/main/Best-Results/proxies.txt",
+  "https://raw.githubusercontent.com/MrAbolfazlNorouzi/iran-configs/refs/heads/main/configs/working-configs.txt",
+  "https://raw.githubusercontent.com/arshiacomplus/v2rayExtractor/refs/heads/main/mix/sub.html",
+  "https://www.v2nodes.com/subscriptions/country/all/?key=CCAD69583DBA2BF",
+  "https://raw.githubusercontent.com/4n0nymou3/multi-proxy-config-fetcher/refs/heads/main/configs/proxy_configs.txt",
   "https://raw.githubusercontent.com/flaafix/AetrisVPN-black-list/refs/heads/main/configs.txt",
   "https://github.com/MustafaBaqer/VestraNet-Nodes/raw/refs/heads/main/protocols/trojan.txt",
   "https://raw.githubusercontent.com/mahsanet/MahsaFreeConfig/refs/heads/main/mci/sub_1.txt",
