@@ -4,6 +4,7 @@ const sourceUrls = [
   "https://github.com/Firmfox/Proxify/raw/refs/heads/main/v2ray_configs/separated_by_protocol/mixed.txt",
   "https://github.com/Firmfox/Proxify/raw/refs/heads/main/v2ray_configs/separated_by_protocol/vless.txt",
   "https://github.com/MustafaBaqer/VestraNet-Nodes/raw/refs/heads/main/protocols/trojan.txt",
+  "https://github.com/MohammadBahemmat/V2ray-Collector/raw/refs/heads/main/all_servers.txt",
   "https://github.com/MustafaBaqer/VestraNet-Nodes/raw/refs/heads/main/protocols/vmess.txt",
   "https://github.com/Firmfox/Proxify/raw/refs/heads/main/v2ray_configs/separated_by_protocol/vmess.txt",
   "https://github.com/Firmfox/Proxify/raw/refs/heads/main/v2ray_configs/separated_by_protocol/trojan.txt",
