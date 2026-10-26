@@ -2,6 +2,9 @@ const fs = require('fs/promises');
 
 const sourceUrls = [
   "https://github.com/Firmfox/Proxify/raw/refs/heads/main/v2ray_configs/separated_by_protocol/mixed.txt",
+  "https://github.com/SoliSpirit/SolVPN/raw/refs/heads/main/Protocols/vless.txt",
+  "https://github.com/SoliSpirit/SolVPN/raw/refs/heads/main/Protocols/trojan.txt",
+  "https://github.com/SoliSpirit/SolVPN/raw/refs/heads/main/Protocols/vmess.txt",
   "https://github.com/Firmfox/Proxify/raw/refs/heads/main/v2ray_configs/separated_by_protocol/vless.txt",
   "https://github.com/MustafaBaqer/VestraNet-Nodes/raw/refs/heads/main/protocols/trojan.txt",
   "https://github.com/liMilCo/v2r/raw/refs/heads/main/new_configs.txt",
