@@ -3,8 +3,11 @@ const fs = require('fs/promises');
 const sourceUrls = [
   "https://github.com/Firmfox/Proxify/raw/refs/heads/main/v2ray_configs/separated_by_protocol/mixed.txt",
   "https://github.com/Firmfox/Proxify/raw/refs/heads/main/v2ray_configs/separated_by_protocol/vless.txt",
+  "https://github.com/MustafaBaqer/VestraNet-Nodes/raw/refs/heads/main/protocols/trojan.txt",
+  "https://github.com/MustafaBaqer/VestraNet-Nodes/raw/refs/heads/main/protocols/vmess.txt",
   "https://github.com/Firmfox/Proxify/raw/refs/heads/main/v2ray_configs/separated_by_protocol/vmess.txt",
   "https://github.com/Firmfox/Proxify/raw/refs/heads/main/v2ray_configs/separated_by_protocol/trojan.txt",
+  "https://github.com/MustafaBaqer/VestraNet-Nodes/raw/refs/heads/main/protocols/vless.txt",
   "https://raw.githubusercontent.com/F0rc3Run/F0rc3Run/refs/heads/main/Best-Results/proxies.txt",
   "https://raw.githubusercontent.com/MrAbolfazlNorouzi/iran-configs/refs/heads/main/configs/working-configs.txt",
   "https://raw.githubusercontent.com/arshiacomplus/v2rayExtractor/refs/heads/main/mix/sub.html",
@@ -31,8 +34,8 @@ const sourceUrls = [
   "https://github.com/roosterkid/openproxylist/raw/refs/heads/main/V2RAY.txt",
   "https://github.com/SoliSpirit/SolVPN/raw/refs/heads/main/all_configs.txt",
   "https://github.com/liMilCo/v2r/raw/refs/heads/main/all_configs.txt",
+  "https://github.com/ebrasha/free-v2ray-public-list/raw/refs/heads/main/V2Ray-Config-By-EbraSha-All-Type.txt",
   "https://sub.vlessfo.ru/vlessforu/working_configs.txt",
-  "https://github.com/ebrasha/free-v2ray-public-list/raw/refs/heads/main/V2Ray-Config-By-EbraSha-All-Type.txt"
 ];
 
 const FREE_IP = "104.18.37.127";
