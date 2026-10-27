@@ -43,7 +43,7 @@ const sourceUrls = [
   "https://sub.vlessfo.ru/vlessforu/working_configs.txt",
 ];
 
-const FREE_IP = "104.18.37.127";
+const FREE_IP = "x.com";
 
 function decodeIfBase64(text) {
   try {
