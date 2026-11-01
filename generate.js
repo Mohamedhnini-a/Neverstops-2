@@ -1,6 +1,7 @@
 const fs = require('fs/promises');
 
 const sourceUrls = [
+  "https://github.com/Mohamedhnini-a/testeur-2/raw/refs/heads/main/working_configs.txt",
   "https://github.com/Firmfox/Proxify/raw/refs/heads/main/v2ray_configs/separated_by_protocol/mixed.txt",
   "https://github.com/SoliSpirit/SolVPN/raw/refs/heads/main/Protocols/vless.txt",
   "https://github.com/SoliSpirit/SolVPN/raw/refs/heads/main/Protocols/trojan.txt",
