@@ -2,6 +2,18 @@ const fs = require('fs/promises');
 
 const sourceUrls = [
   "https://github.com/Mohamedhnini-a/testeur-2/raw/refs/heads/main/working_configs.txt",
+  "https://raw.githubusercontent.com/MohammadBahemmat/V2ray-Collector/main/all_servers.txt",
+  "https://raw.githubusercontent.com/miladtahanian/Config-Collector/main/mixed_iran.txt",
+  "https://raw.githubusercontent.com/mohammadaz2/v2rayConfigsForYou/main/configs.txt",
+  "https://raw.githubusercontent.com/MahanKenway/Freedom-V2Ray/main/configs/mix.txt",
+  "https://raw.githubusercontent.com/Kolandone/v2raycollector/main/config.txt",
+  "https://raw.githubusercontent.com/Farid-Karimi/Config-Collector/main/mixed_iran.txt",
+  "https://github.com/miladtahanian/Config-Collector/raw/refs/heads/main/mixed_iran.txt",
+  "https://raw.githubusercontent.com/hamedcode/port-based-v2ray-configs/main/detailed/vless/443.txt",
+  "https://raw.githubusercontent.com/hamedcode/port-based-v2ray-configs/main/detailed/vmess/443.txt",
+  "https://raw.githubusercontent.com/hamedcode/port-based-v2ray-configs/main/detailed/trojan/443.txt",
+  
+  
 ];
 
 const FREE_IP = "www.getlucky.com";
