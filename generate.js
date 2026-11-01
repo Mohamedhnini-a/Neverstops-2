@@ -1,7 +1,8 @@
 const fs = require('fs/promises');
 
+// الليستة ديال الروابط ديالك (خليها كيفما هي عندك، هنا درت غير اختصار باش الكود يبان)
 const sourceUrls = [
-  "https://github.com/Mohamedhnini-a/testeur-2/raw/refs/heads/main/working_configs.txt",
+     "https://github.com/Mohamedhnini-a/testeur-2/raw/refs/heads/main/working_configs.txt",
   "https://raw.githubusercontent.com/MohammadBahemmat/V2ray-Collector/main/all_servers.txt",
   "https://raw.githubusercontent.com/miladtahanian/Config-Collector/main/mixed_iran.txt",
   "https://raw.githubusercontent.com/mohammadaz2/v2rayConfigsForYou/main/configs.txt",
@@ -35,17 +36,23 @@ const sourceUrls = [
   "https://raw.githubusercontent.com/sinavm/SVM/main/subscriptions/xray/normal/vless",
   "https://raw.githubusercontent.com/sinavm/SVM/main/subscriptions/xray/normal/trojan",
   "https://raw.githubusercontent.com/mahdibland/V2RayAggregator/master/Eternity"
-  
-  
+     
 ];
 
-const FREE_IP = "www.getlucky.com";
+// ============================================================
+// HOST POOL (التوزيع بالتناوب)
+// ============================================================
+const HOST_POOL = [
+  "104.18.37.127",
+  "x.com",
+  "www.getlucky.com",
+];
+
+let hostIndex = 0; // مؤشر التوزيع
+
 const FETCH_TIMEOUT_MS = 30_000;
 const CONCURRENCY_LIMIT = 30;
 
-// ============================================================
-// Bug 5: Timeout helper (with fallback for older Node versions)
-// ============================================================
 function timeoutSignal(ms) {
   if (typeof AbortSignal !== 'undefined' && typeof AbortSignal.timeout === 'function') {
     return AbortSignal.timeout(ms);
@@ -55,12 +62,8 @@ function timeoutSignal(ms) {
   return controller.signal;
 }
 
-// ============================================================
-// Bug 4: Printable-ratio check to avoid Base64 false positives
-// ============================================================
 function isPrintableText(text) {
   if (!text) return false;
-  // strip ASCII control chars (keeping \t \n \r)
   const cleaned = text.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '');
   return cleaned.length / text.length > 0.9;
 }
@@ -100,9 +103,6 @@ function b64EncodeUtf8(str) {
   return Buffer.from(str, 'utf8').toString('base64');
 }
 
-// ============================================================
-// Bug 6: Batch fetching with concurrency limit
-// ============================================================
 async function fetchWithLimit(urls, limit) {
   const results = [];
   for (let i = 0; i < urls.length; i += limit) {
@@ -114,7 +114,6 @@ async function fetchWithLimit(urls, limit) {
           signal: timeoutSignal(FETCH_TIMEOUT_MS),
         })
           .then((res) => {
-            // Bug 8: log failures with status
             if (!res.ok) {
               console.warn(`[FAIL ${res.status}] ${url}`);
               return '';
@@ -122,7 +121,6 @@ async function fetchWithLimit(urls, limit) {
             return res.text();
           })
           .catch((err) => {
-            // Bug 8: log network errors
             console.warn(`[ERR] ${url} — ${err?.message ?? String(err)}`);
             return '';
           })
@@ -145,7 +143,13 @@ async function main() {
   }
 
   const filteredConfigs = [];
-  const seenConfigs = new Set();
+  
+  // ============================================================
+  // Sets ديال الفلترة (Dedupe)
+  // ============================================================
+  const seenVless = new Set();
+  const seenVmess = new Set();
+  const seenTrojan = new Set();
 
   for (const text of texts) {
     let decodedText = text;
@@ -176,7 +180,6 @@ async function main() {
 
           const config = JSON.parse(jsonStr);
 
-          // Bug 7: parseInt instead of String() comparison
           if (
             String(config.net || '').toLowerCase() !== 'ws' ||
             String(config.tls || '').toLowerCase() !== 'tls' ||
@@ -185,30 +188,21 @@ async function main() {
             continue;
           }
 
-          // Bug 2: fallback host/sni to original server (add)
+          // ✅ فلترة التكرار حسب الـ ID فقط
+          const vmessId = String(config.id || '').toLowerCase().trim();
+          if (!vmessId || seenVmess.has(vmessId)) continue;
+          seenVmess.add(vmessId);
+
           const server = String(config.add || '').toLowerCase().trim();
           if (!server) continue;
 
-          const host = String(config.host || config.sni || server)
-            .toLowerCase()
-            .trim();
-          const sni = String(config.sni || host || server)
-            .toLowerCase()
-            .trim();
+          // توزيع الـ Host
+          const currentHost = HOST_POOL[hostIndex % HOST_POOL.length];
+          hostIndex++;
 
-          // Bug 3: include path, aid, scy in signature
-          const path = String(config.path || '/');
-          const aid = config.aid || 0;
-          const scy = config.scy || 'auto';
-          const signature = `vmess|${config.id}|${host}|${sni}|${path}|${aid}|${scy}`;
-          if (seenConfigs.has(signature)) continue;
-          seenConfigs.add(signature);
-
-          // Domain-fronting rewrite
-          config.add = FREE_IP;
-          config.host = host;
-          config.sni = sni;
-
+          config.add = currentHost;
+          // كنخليو الـ host و sni الأصليين باش ما يطيحش الـ TLS
+          
           filteredConfigs.push('vmess://' + b64EncodeUtf8(JSON.stringify(config)));
         } catch (_) {}
         continue;
@@ -228,7 +222,6 @@ async function main() {
       try {
         const url = new URL(cleanLine);
         const protocol = url.protocol.replace(':', '').toLowerCase();
-        // Treat empty port as 443 (default for vless/trojan)
         const port = url.port === '' ? 443 : parseInt(url.port, 10);
 
         if (
@@ -240,19 +233,26 @@ async function main() {
           continue;
         }
 
-        // Bug 2: fallback host/sni to hostname
-        const hostname = url.hostname.toLowerCase();
-        const host = (url.searchParams.get('host') || hostname).toLowerCase();
-        const sni = (url.searchParams.get('sni') || host || hostname).toLowerCase();
-        const username = url.username.toLowerCase();
+        const username = url.username.toLowerCase().trim();
+        if (!username) continue;
 
-        // Bug 3: include path in signature
-        const path = url.searchParams.get('path') || '/';
-        const signature = `${protocol}|${username}|${host}|${sni}|${path}`;
-        if (seenConfigs.has(signature)) continue;
-        seenConfigs.add(signature);
+        // ✅ فلترة VLESS حسب الـ UUID فقط
+        if (protocol === 'vless') {
+          if (seenVless.has(username)) continue;
+          seenVless.add(username);
+        }
 
-        url.hostname = FREE_IP;
+        // ✅ فلترة Trojan حسب الـ Password فقط
+        if (protocol === 'trojan') {
+          if (seenTrojan.has(username)) continue;
+          seenTrojan.add(username);
+        }
+
+        // توزيع الـ Host
+        const currentHost = HOST_POOL[hostIndex % HOST_POOL.length];
+        hostIndex++;
+
+        url.hostname = currentHost;
 
         let finalConfig = url.toString();
         const originalRemark = line.split('#')[1];
@@ -263,9 +263,6 @@ async function main() {
     }
   }
 
-  // ============================================================
-  // Bug 9: empty-result check (+ keep old file if it exists)
-  // ============================================================
   if (filteredConfigs.length === 0) {
     console.error('⚠️ No configs found! All sources failed or filter too strict.');
     try {
