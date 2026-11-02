@@ -11,7 +11,6 @@ const sourceUrls = [
      "https://github.com/asgharkapk/Sub-Config-Extractor/raw/refs/heads/main/output_configs/mixed/AzadNet/-t.me.yaml",
      "https://github.com/roosterkid/openproxylist/raw/refs/heads/main/V2RAY_RAW.txt",
      "https://github.com/SoliSpirit/SolVPN/raw/refs/heads/main/Protocols/trojan.txt",
-     "https://github.com/SoliSpirit/SolVPN/blob/main/Protocols/vless.txt",
      "https://github.com/SoliSpirit/SolVPN/raw/refs/heads/main/Protocols/vmess.txt",
      "https://github.com/YawStar/Proxy-Hunter/raw/refs/heads/main/configs/proxy_configs_tested.txt",
      "https://github.com/chaishpish/free_server_v2ray/raw/refs/heads/main/@TFMTProto",
