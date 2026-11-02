@@ -16,6 +16,7 @@ const sourceUrls = [
      "https://github.com/YawStar/Proxy-Hunter/raw/refs/heads/main/configs/proxy_configs_tested.txt",
      "https://github.com/chaishpish/free_server_v2ray/raw/refs/heads/main/@TFMTProto",
      "https://github.com/lm705/vair/raw/refs/heads/main/vless_alive.txt",
+     "https://github.com/SoliSpirit/SolVPN/raw/refs/heads/main/Protocols/vless.txt",
      
      
 ];
