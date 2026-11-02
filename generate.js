@@ -3,6 +3,12 @@ const fs = require('fs/promises');
 // الليستة ديال الروابط ديالك (خليها كيفما هي عندك، هنا درت غير اختصار باش الكود يبان)
 const sourceUrls = [
      "https://github.com/Mohamedhnini-a/testeur-2/raw/refs/heads/main/working_configs.txt",
+     "https://github.com/0xRadikal/Free-v2ray-Configs/raw/refs/heads/main/all/configs.txt",
+     "https://github.com/kort0881/vpn-vless-configs-russia/raw/refs/heads/main/data/githubmirror/ru-sni/trojan.txt',
+     "https://github.com/kort0881/vpn-vless-configs-russia/raw/refs/heads/main/data/githubmirror/ru-sni/vless.txt",
+     "https://github.com/asgharkapk/Sub-Config-Extractor/raw/refs/heads/main/output_configs/mixed/10ium/HiN-VPN/subscription/hiddify/trojan.yaml",
+     "https://github.com/asgharkapk/Sub-Config-Extractor/raw/refs/heads/main/output_configs/mixed/10ium/HiN-VPN/subscription/hiddify/vmess.yaml",
+     "https://github.com/asgharkapk/Sub-Config-Extractor/raw/refs/heads/main/output_configs/mixed/AzadNet/-t.me.yaml",
      "https://github.com/roosterkid/openproxylist/raw/refs/heads/main/V2RAY_RAW.txt",
      "https://github.com/SoliSpirit/SolVPN/raw/refs/heads/main/Protocols/trojan.txt",
      "https://github.com/SoliSpirit/SolVPN/blob/main/Protocols/vless.txt",
@@ -10,6 +16,7 @@ const sourceUrls = [
      "https://github.com/YawStar/Proxy-Hunter/raw/refs/heads/main/configs/proxy_configs_tested.txt",
      "https://github.com/chaishpish/free_server_v2ray/raw/refs/heads/main/@TFMTProto",
      "https://github.com/lm705/vair/raw/refs/heads/main/vless_alive.txt",
+     
      
 ];
 
