@@ -1,7 +1,8 @@
 const fs = require('fs/promises');
 
-// الليستة ديال الروابط ديالك (خليها كيفما هي عندك، هنا درت غير اختصار باش الكود يبان)
+// الليستة ديال الروابط ديالك
 const sourceUrls = [
+    
      "https://github.com/Mohamedhnini-a/Neverstops-2/raw/refs/heads/main/sub.txt",
      "https://github.com/MustafaBaqer/VestraNet-Nodes/raw/refs/heads/main/subscriptions/mix-normal.txt",
      "https://github.com/VOID-Anonymity/V.O.I.D-VPN_Bypass/raw/refs/heads/main/url_work.txt",
@@ -24,15 +25,6 @@ const sourceUrls = [
      
      
 ];
-
-// ============================================================
-// HOST POOL (التوزيع بالتناوب)
-// ============================================================
-const HOST_POOL = [
-  "104.18.37.127",
-];
-
-let hostIndex = 0; // مؤشر التوزيع
 
 const FETCH_TIMEOUT_MS = 30_000;
 const CONCURRENCY_LIMIT = 30;
@@ -180,13 +172,8 @@ async function main() {
           const server = String(config.add || '').toLowerCase().trim();
           if (!server) continue;
 
-          // توزيع الـ Host
-          const currentHost = HOST_POOL[hostIndex % HOST_POOL.length];
-          hostIndex++;
+          // 🔵 كنحافظو على الـ host الأصلي كيفما هو (بلا تبديل)
 
-          config.add = currentHost;
-          // كنخليو الـ host و sni الأصليين باش ما يطيحش الـ TLS
-          
           filteredConfigs.push('vmess://' + b64EncodeUtf8(JSON.stringify(config)));
         } catch (_) {}
         continue;
@@ -232,11 +219,7 @@ async function main() {
           seenTrojan.add(username);
         }
 
-        // توزيع الـ Host
-        const currentHost = HOST_POOL[hostIndex % HOST_POOL.length];
-        hostIndex++;
-
-        url.hostname = currentHost;
+        // 🔵 كنحافظو على الـ hostname الأصلي كيفما هو (بلا تبديل)
 
         let finalConfig = url.toString();
         const originalRemark = line.split('#')[1];
