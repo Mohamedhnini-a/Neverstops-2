@@ -3,7 +3,7 @@ const fs = require('fs/promises');
 // الليستة ديال الروابط ديالك
 const sourceUrls = [
     
-     "https://github.com/Mohamedhnini-a/Neverstops-2/raw/refs/heads/main/sub.txt",
+     
      "https://github.com/MustafaBaqer/VestraNet-Nodes/raw/refs/heads/main/subscriptions/mix-normal.txt",
      "https://github.com/VOID-Anonymity/V.O.I.D-VPN_Bypass/raw/refs/heads/main/url_work.txt",
      
