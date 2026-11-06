@@ -2,11 +2,15 @@ const fs = require('fs/promises');
 
 // الليستة ديال الروابط ديالك
 const sourceUrls = [
+    "https://github.com/CNT-Cafe/Public-Configs/raw/refs/heads/main/%E2%9C%A7%20Public%20Configs",
+    "https://github.com/alireza786786/Free-V2ray-Configs/raw/refs/heads/main/servers/trojan_servers.txt",
+     "https://github.com/svinakraft-maker/FlareFeed/raw/refs/heads/main/public/trojan.txt",
+     "https://github.com/svinakraft-maker/FlareFeed/raw/refs/heads/main/public/vless.txt",
+     "https://github.com/svinakraft-maker/FlareFeed/raw/refs/heads/main/public/vmess.txt",
     
-     
      "https://github.com/MustafaBaqer/VestraNet-Nodes/raw/refs/heads/main/subscriptions/mix-normal.txt",
      "https://github.com/VOID-Anonymity/V.O.I.D-VPN_Bypass/raw/refs/heads/main/url_work.txt",
-     "https://github.com/svinakraft-maker/FlareFeed/raw/refs/heads/main/public/trojan.txt",
+     
      "https://github.com/YawStar/Proxy-Hunter/raw/refs/heads/main/configs/proxy_configs_tested.txt",
      "https://github.com/Mohamedhnini-a/testeur-2/raw/refs/heads/main/working_configs.txt",
      "https://github.com/0xRadikal/Free-v2ray-Configs/raw/refs/heads/main/all/configs.txt",
