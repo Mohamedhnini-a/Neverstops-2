@@ -2,6 +2,13 @@ const fs = require('fs/promises');
 
 // الليستة ديال الروابط ديالك
 const sourceUrls = [
+    "https://github.com/Diversan313/apex-parser/raw/refs/heads/main/subs/main/alive_plain_bl.txt",
+    "https://github.com/Diversan313/apex-parser/raw/refs/heads/main/subs/main/alive_plain_bs.txt",
+    "https://github.com/Diversan313/apex-parser/raw/refs/heads/main/subs/main/alive_plain_full.txt",
+    "https://github.com/svinakraft-maker/FlareFeed/raw/refs/heads/main/public/trojan.txt",
+    "https://github.com/svinakraft-maker/FlareFeed/raw/refs/heads/main/public/vless.txt",
+    "https://github.com/svinakraft-maker/FlareFeed/raw/refs/heads/main/public/vmess.txt",
+    
     "https://github.com/svinakraft-maker/FlareFeed/raw/refs/heads/main/public/trojan.txt",
     "https://github.com/Argh94/V2RayAutoConfig/raw/refs/heads/main/configs/Trojan.txt",
     
